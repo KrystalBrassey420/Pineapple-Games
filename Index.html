@@ -69,6 +69,12 @@
 
   .content{ position: relative; z-index: 1; }
 
+  /* ---------- logo mark ---------- */
+  .logo-mark{
+    display: block;
+    overflow: visible;
+  }
+
   /* ---------- nav ---------- */
   nav{
     display: flex;
@@ -87,13 +93,10 @@
     display: flex;
     align-items: center;
     gap: 14px;
+    text-decoration: none;
   }
 
-  .brand img{
-    height: 46px;
-    width: auto;
-    display: block;
-  }
+  .brand .logo-mark{ width: 46px; height: 46px; }
 
   .brand span{
     font-family: 'Press Start 2P', monospace;
@@ -167,11 +170,11 @@
     position: relative;
   }
 
-  .hero-logo{
-    width: min(300px, 60vw);
-    height: auto;
+  .hero .logo-mark{
+    width: min(220px, 50vw);
+    height: min(220px, 50vw);
     margin-bottom: 36px;
-    filter: drop-shadow(0 0 30px rgba(255,46,147,0.28)) drop-shadow(0 0 46px rgba(123,220,78,0.18));
+    filter: drop-shadow(0 0 20px rgba(255,46,147,0.35)) drop-shadow(0 0 30px rgba(123,220,78,0.22));
     animation: flicker 6s infinite;
   }
 
@@ -437,8 +440,9 @@
     to{ transform: rotate(360deg); }
   }
 
-  .about-visual img{
-    width: 62%;
+  .about-visual .logo-mark{
+    width: 55%;
+    height: 55%;
     position: relative;
     filter: drop-shadow(0 0 24px rgba(123,220,78,0.25));
   }
@@ -532,7 +536,7 @@
     gap: 12px;
   }
 
-  .footer-brand img{ height: 34px; }
+  .footer-brand .logo-mark{ width: 34px; height: 34px; }
 
   .footer-brand span{
     font-family: 'Press Start 2P', monospace;
@@ -566,15 +570,45 @@
 </head>
 <body>
 
+<!-- Reusable inline SVG logo mark, defined once and referenced with <use> everywhere below.
+     No external image file is loaded, so there is nothing that can 404 on deploy. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="pineapple-mark" viewBox="0 0 100 100">
+    <rect x="2" y="2" width="96" height="96" rx="20" fill="#08070b"/>
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- leaves -->
+      <path d="M50 46 C 47 32, 43 20, 38 10" stroke="#7bdc4e" stroke-width="2.4"/>
+      <path d="M50 46 C 49 30, 49 18, 50 8" stroke="#ff2e93" stroke-width="2.4"/>
+      <path d="M50 46 C 53 32, 58 21, 64 12" stroke="#7bdc4e" stroke-width="2.4"/>
+      <path d="M50 46 C 44 34, 36 25, 26 20" stroke="#ff2e93" stroke-width="2.2"/>
+      <path d="M50 46 C 56 35, 63 27, 72 22" stroke="#7bdc4e" stroke-width="2.2"/>
+      <!-- body -->
+      <path d="M50 46
+               C 66 46, 76 58, 74 72
+               C 72 86, 61 93, 50 93
+               C 39 93, 28 86, 26 72
+               C 24 58, 34 46, 50 46 Z"
+            stroke="#7bdc4e" stroke-width="2.6"/>
+      <!-- crosshatch -->
+      <path d="M30 58 L 62 88" stroke="#ff2e93" stroke-width="1.6"/>
+      <path d="M36 51 L 70 80" stroke="#7bdc4e" stroke-width="1.6"/>
+      <path d="M44 47 L 76 70" stroke="#ff2e93" stroke-width="1.6"/>
+      <path d="M70 58 L 38 88" stroke="#7bdc4e" stroke-width="1.6"/>
+      <path d="M64 51 L 30 80" stroke="#ff2e93" stroke-width="1.6"/>
+      <path d="M56 47 L 24 70" stroke="#7bdc4e" stroke-width="1.6"/>
+    </g>
+  </symbol>
+</svg>
+
 <div class="grid-floor"></div>
 
 <div class="content">
 
   <nav>
-    <div class="brand">
-      <img src="pineapple-logo.png" alt="Pineapple Games logo">
+    <a href="#" class="brand">
+      <svg class="logo-mark" viewBox="0 0 100 100"><use href="#pineapple-mark"/></svg>
       <span>PINEAPPLE GAMES</span>
-    </div>
+    </a>
     <ul class="nav-links">
       <li><a href="#games">Games</a></li>
       <li><a href="#about">About</a></li>
@@ -584,7 +618,7 @@
   </nav>
 
   <header class="hero">
-    <img src="pineapple-logo.png" alt="Pineapple Games logo" class="hero-logo">
+    <svg class="logo-mark" viewBox="0 0 100 100"><use href="#pineapple-mark"/></svg>
     <h1>WE GROW GAMES <span class="accent">FULL</span> OF <span class="accent-2">SPIKE</span></h1>
     <p>An indie studio turning tropical fruit into arcade chaos — sharp, sweet, and built to be played with friends until 2am.</p>
     <div class="hero-actions">
@@ -659,7 +693,7 @@
         </div>
       </div>
       <div class="about-visual">
-        <img src="pineapple-logo.png" alt="Pineapple Games logo mark">
+        <svg class="logo-mark" viewBox="0 0 100 100"><use href="#pineapple-mark"/></svg>
       </div>
     </div>
   </section>
@@ -679,7 +713,7 @@
 
   <footer>
     <div class="footer-brand">
-      <img src="pineapple-logo.png" alt="Pineapple Games logo">
+      <svg class="logo-mark" viewBox="0 0 100 100"><use href="#pineapple-mark"/></svg>
       <span>PINEAPPLE GAMES</span>
     </div>
     <ul class="footer-links">
